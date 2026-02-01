@@ -1,0 +1,303 @@
+---
+const title = "Resources — djerhy.tech";
+const description = "Practical artifacts you can use immediately.";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0D1117;
+      color: #e6edf3;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      margin-bottom: 60px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(230, 237, 243, 0.1);
+    }
+
+    .logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e6edf3;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: #8b949e;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #e6edf3;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .intro {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #8b949e;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6e7681;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      margin-top: 48px;
+    }
+
+    .section-label:first-of-type {
+      margin-top: 0;
+    }
+
+    .resource-card {
+      display: block;
+      background: rgba(230, 237, 243, 0.03);
+      border: 1px solid rgba(230, 237, 243, 0.08);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 12px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .resource-card:hover {
+      background: rgba(230, 237, 243, 0.05);
+      border-color: rgba(230, 237, 243, 0.15);
+    }
+
+    .resource-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .resource-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #e6edf3;
+    }
+
+    .resource-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: #8b949e;
+      background: rgba(230, 237, 243, 0.05);
+      border: 1px solid rgba(230, 237, 243, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .resource-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #8b949e;
+    }
+
+    .featured-card {
+      background: rgba(47, 129, 247, 0.05);
+      border: 1px solid rgba(47, 129, 247, 0.2);
+    }
+
+    .featured-card:hover {
+      background: rgba(47, 129, 247, 0.08);
+      border-color: rgba(47, 129, 247, 0.3);
+    }
+
+    .featured-card .resource-badge {
+      background: rgba(47, 129, 247, 0.15);
+      border-color: rgba(47, 129, 247, 0.3);
+      color: #2F81F7;
+    }
+
+    .contact {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(230, 237, 243, 0.1);
+      text-align: center;
+      font-size: 14px;
+      color: #8b949e;
+    }
+
+    .contact a {
+      color: #2F81F7;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding-top: 40px;
+      border-top: 1px solid rgba(230, 237, 243, 0.1);
+      font-size: 13px;
+      color: #6e7681;
+      margin-top: 60px;
+    }
+
+    .footer-identity {
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    footer a {
+      color: #8b949e;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #e6edf3;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 32px 16px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .resource-card-header {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="/" class="logo">djerhy.tech</a>
+      <nav>
+        <a href="/start-here">Start Here</a>
+        <a href="/resources">Resources</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Resources</h1>
+      <p class="intro">
+        Practical artifacts you can use immediately.
+      </p>
+
+      <div class="section-label">Free Downloads</div>
+
+      <a href="/asset-walkthrough.pdf" class="resource-card" download>
+        <div class="resource-card-header">
+          <div class="resource-title">Asset Walkthrough Guide</div>
+          <div class="resource-badge">PDF</div>
+        </div>
+        <div class="resource-desc">
+          A structured walkthrough to identify unknown systems and unclear ownership.
+        </div>
+      </a>
+
+      <a href="/Week One Security Assetment.pdf" class="resource-card" download>
+        <div class="resource-card-header">
+          <div class="resource-title">Week One Security Assessment</div>
+          <div class="resource-badge">PDF</div>
+        </div>
+        <div class="resource-desc">
+          A first-week framework for understanding exposure before controls.
+        </div>
+      </a>
+
+      <a href="/ATM2.pdf" class="resource-card" download>
+        <div class="resource-card-header">
+          <div class="resource-title">AddressTheMess Collection</div>
+          <div class="resource-badge">PDF</div>
+        </div>
+        <div class="resource-desc">
+          A compiled set of system checks and prompts.
+        </div>
+      </a>
+
+      <div class="section-label">Paid Framework</div>
+
+      <a href="https://2279442040293.gumroad.com/l/jcdlx" class="resource-card featured-card" target="_blank" rel="noopener noreferrer">
+        <div class="resource-card-header">
+          <div class="resource-title">Asset Intelligence Framework</div>
+          <div class="resource-badge">Gumroad</div>
+        </div>
+        <div class="resource-desc">
+          A structured model for mapping assets, ownership, and risk across environments.
+        </div>
+      </a>
+
+      <div class="contact">
+        Questions? <a href="mailto:contact@djerhy.tech">contact@djerhy.tech</a>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-identity">
+        Djerhy Jn Baptiste • CISSP
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/djerhyjnbaptiste" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/JBDjerhy" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.credly.com/users/djerhy-jn-baptiste" target="_blank" rel="noopener noreferrer">Credly</a>
+      </div>
+      <div>© 2026 djerhy.tech</div>
+    </footer>
+  </div>
+</body>
+</html>
