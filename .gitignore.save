@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+.astro/
+
+# env
+.env
+.env.*
+!.env.example
+
+# OS/editor junk
+.DS_Store
+*.log
+
+# Netlify
+.netlify/
+
+
