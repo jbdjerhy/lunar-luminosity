@@ -1,6 +1,6 @@
 ---
-const title = "Address The Mess — djerhy.tech";
-const description = "The asset intelligence framework for mapping ownership, decision authority, and operational control across systems.";
+const title = "Address The Mess | djerhy.tech";
+const description = "The 30 day authority sprint for mapping ownership, decision rights, and operational control across systems.";
 ---
 
 <!DOCTYPE html>
@@ -10,18 +10,18 @@ const description = "The asset intelligence framework for mapping ownership, dec
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-  
+
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #0D1117;
       color: #e6edf3;
       line-height: 1.6;
@@ -29,20 +29,20 @@ const description = "The asset intelligence framework for mapping ownership, dec
     }
 
     .container {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 40px 20px;
     }
 
     header {
-      margin-bottom: 60px;
+      margin-bottom: 56px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(230, 237, 243, 0.1);
+      border-bottom: 1px solid rgba(230, 237, 243, 0.12);
     }
 
     .logo {
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 650;
       color: #e6edf3;
       text-decoration: none;
       letter-spacing: 0.3px;
@@ -57,139 +57,150 @@ const description = "The asset intelligence framework for mapping ownership, dec
 
     nav a {
       font-size: 14px;
-      color: #8b949e;
+      color: #b1bac4;
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: #e6edf3;
-    }
+    nav a:hover { color: #e6edf3; }
 
     h1 {
-      font-size: clamp(32px, 5vw, 44px);
+      font-size: clamp(32px, 5vw, 46px);
       line-height: 1.1;
-      font-weight: 700;
-      margin-bottom: 16px;
+      font-weight: 750;
       letter-spacing: -0.02em;
+      margin-bottom: 14px;
     }
 
     .intro {
       font-size: 16px;
-      line-height: 1.6;
-      color: #8b949e;
-      margin-bottom: 24px;
+      line-height: 1.7;
+      color: #b1bac4;
+      margin-bottom: 18px;
+      max-width: 640px;
+    }
+
+    .subnote {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #9aa4af;
+      margin-bottom: 28px;
+      max-width: 640px;
     }
 
     .section-label {
       font-size: 12px;
-      font-weight: 600;
-      color: #6e7681;
+      font-weight: 700;
+      color: #9aa4af;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 16px;
-      margin-top: 48px;
-    }
-
-    .section-label:first-of-type {
-      margin-top: 0;
+      margin: 40px 0 14px 0;
     }
 
     .resource-card {
       display: block;
-      background: rgba(230, 237, 243, 0.03);
-      border: 1px solid rgba(230, 237, 243, 0.08);
-      border-radius: 8px;
+      background: rgba(230, 237, 243, 0.035);
+      border: 1px solid rgba(230, 237, 243, 0.10);
+      border-radius: 10px;
       padding: 20px;
       margin-bottom: 12px;
       text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
 
     .resource-card:hover {
-      background: rgba(230, 237, 243, 0.05);
-      border-color: rgba(230, 237, 243, 0.15);
+      background: rgba(230, 237, 243, 0.055);
+      border-color: rgba(230, 237, 243, 0.18);
+      transform: translateY(-1px);
     }
 
     .resource-card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 16px;
+      gap: 14px;
       margin-bottom: 8px;
     }
 
     .resource-title {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       color: #e6edf3;
+      line-height: 1.35;
     }
 
     .resource-badge {
       font-size: 11px;
-      font-weight: 600;
-      color: #8b949e;
-      background: rgba(230, 237, 243, 0.05);
-      border: 1px solid rgba(230, 237, 243, 0.1);
+      font-weight: 750;
+      color: #b1bac4;
+      background: rgba(230, 237, 243, 0.06);
+      border: 1px solid rgba(230, 237, 243, 0.12);
       padding: 4px 10px;
-      border-radius: 4px;
+      border-radius: 999px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .resource-desc {
       font-size: 14px;
-      line-height: 1.5;
-      color: #8b949e;
+      line-height: 1.6;
+      color: #b1bac4;
+      max-width: 640px;
     }
 
     .featured-card {
-      background: rgba(47, 129, 247, 0.05);
-      border: 1px solid rgba(47, 129, 247, 0.2);
+      background: rgba(47, 129, 247, 0.08);
+      border: 1px solid rgba(47, 129, 247, 0.28);
     }
 
     .featured-card:hover {
-      background: rgba(47, 129, 247, 0.08);
-      border-color: rgba(47, 129, 247, 0.3);
+      background: rgba(47, 129, 247, 0.11);
+      border-color: rgba(47, 129, 247, 0.40);
     }
 
     .featured-card .resource-badge {
-      background: rgba(47, 129, 247, 0.15);
-      border-color: rgba(47, 129, 247, 0.3);
-      color: #2F81F7;
+      background: rgba(47, 129, 247, 0.18);
+      border-color: rgba(47, 129, 247, 0.34);
+      color: #7fb0ff;
     }
+
+    .helper-box {
+      margin-top: 18px;
+      background: rgba(230, 237, 243, 0.03);
+      border: 1px solid rgba(230, 237, 243, 0.10);
+      border-radius: 10px;
+      padding: 18px 18px;
+      color: #b1bac4;
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 640px;
+    }
+
+    .helper-box strong { color: #e6edf3; }
 
     .contact {
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(230, 237, 243, 0.1);
+      margin-top: 52px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(230, 237, 243, 0.12);
       text-align: center;
       font-size: 14px;
-      color: #8b949e;
+      color: #b1bac4;
     }
 
-    .contact a {
-      color: #2F81F7;
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
+    .contact a { color: #2F81F7; text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
 
     footer {
-      padding-top: 40px;
-      border-top: 1px solid rgba(230, 237, 243, 0.1);
+      padding-top: 36px;
+      border-top: 1px solid rgba(230, 237, 243, 0.12);
       font-size: 13px;
-      color: #6e7681;
-      margin-top: 60px;
+      color: #9aa4af;
+      margin-top: 56px;
     }
 
-    .footer-identity {
-      margin-bottom: 12px;
-    }
-
+    .footer-identity { margin-bottom: 12px; }
     .footer-links {
       display: flex;
       gap: 16px;
@@ -197,56 +208,53 @@ const description = "The asset intelligence framework for mapping ownership, dec
       margin-bottom: 16px;
     }
 
-    footer a {
-      color: #8b949e;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: #e6edf3;
-    }
+    footer a { color: #b1bac4; text-decoration: none; }
+    footer a:hover { color: #e6edf3; }
 
     @media (max-width: 640px) {
-      .container {
-        padding: 32px 16px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-
-      .resource-card-header {
-        flex-direction: column;
-        gap: 8px;
-      }
+      .container { padding: 32px 16px; }
+      h1 { font-size: 28px; }
+      .resource-card-header { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
       <a href="/" class="logo">djerhy.tech</a>
       <nav>
         <a href="/start-here">Start Here</a>
-        <a href="/resources">Address The Mess</a>
+        <a href="/resources">Resources</a>
       </nav>
     </header>
 
     <main>
-      <h1>Address The Mess</h1>
+      <h1>Address The Mess: The 30 Day Authority Sprint</h1>
+
       <p class="intro">
-        The asset intelligence framework for mapping ownership, decision authority, and operational control across systems.
+        A structured 30 day process for mapping ownership, decision rights, and operational control across a real system in your environment.
       </p>
 
-      <a href="https://2279442040293.gumroad.com/l/srxnun" class="resource-card featured-card" target="_blank" rel="noopener noreferrer">
+      <p class="subnote">
+        The goal is a defensible internal outcome you can hand to leadership after four weeks of contained work.
+      </p>
+
+      <div class="section-label">Start Here</div>
+
+      <a href="https://2279442040293.gumroad.com/l/sjmcby" class="resource-card featured-card" target="_blank" rel="noopener noreferrer">
         <div class="resource-card-header">
-          <div class="resource-title">Address The Mess — Authority-First Asset Intelligence</div>
+          <div class="resource-title">Run the 30 Day Authority Sprint</div>
           <div class="resource-badge">Gumroad</div>
         </div>
         <div class="resource-desc">
-          The full framework: a structured method for identifying responsibility gaps and establishing decision-grade control.
+          Identify ownership, verify dependencies, review access, and document what can safely change. Includes templates and outcome summary.
         </div>
       </a>
+
+      <div class="helper-box">
+        <strong>Outcome:</strong> you end the month able to explain who owns the system, who can access it, what depends on it, and what change would be risky.
+      </div>
 
       <div class="section-label">Supporting Materials</div>
 
@@ -256,13 +264,13 @@ const description = "The asset intelligence framework for mapping ownership, dec
           <div class="resource-badge">PDF</div>
         </div>
         <div class="resource-desc">
-          A practical exercise for locating unmanaged or unowned systems.
+          Exercise for locating unmanaged or unowned systems and documenting what you can verify.
         </div>
       </a>
 
       <a href="/Week One Security Assetment.pdf" class="resource-card" download>
         <div class="resource-card-header">
-          <div class="resource-title">First-Week Investigation</div>
+          <div class="resource-title">Week One Investigation</div>
           <div class="resource-badge">PDF</div>
         </div>
         <div class="resource-desc">
@@ -276,7 +284,7 @@ const description = "The asset intelligence framework for mapping ownership, dec
           <div class="resource-badge">PDF</div>
         </div>
         <div class="resource-desc">
-          Questions and checks used to surface ownership and responsibility gaps.
+          Questions used to surface ownership gaps and risky unknown dependencies.
         </div>
       </a>
 
