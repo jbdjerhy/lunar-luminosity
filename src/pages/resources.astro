@@ -1,6 +1,6 @@
 ---
-const title = "Address The Mess | djerhy.tech";
-const description = "The 30 day authority sprint for mapping ownership, decision rights, and operational control across systems.";
+const title = "Resources | djerhy.tech";
+const description = "Free diagnostic tools for surfacing ownership and dependency risk — plus the 30-day authority sprint to execute.";
 ---
 
 <!DOCTYPE html>
@@ -20,30 +20,52 @@ const description = "The 30 day authority sprint for mapping ownership, decision
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    :root {
+      --bg: #0D1117;
+      --text: #e6edf3;
+      --muted: #b1bac4;
+      --muted2: #9aa4af;
+      --border: rgba(230, 237, 243, 0.12);
+      --border2: rgba(230, 237, 243, 0.10);
+      --panel: rgba(230, 237, 243, 0.035);
+      --panelHover: rgba(230, 237, 243, 0.055);
+      --primary: #2F81F7;
+      --primaryHover: #1E6AD8;
+      --accentPanel: rgba(47, 129, 247, 0.08);
+      --accentBorder: rgba(47, 129, 247, 0.28);
+      --accentPanelHover: rgba(47, 129, 247, 0.11);
+      --accentBorderHover: rgba(47, 129, 247, 0.40);
+      --accentText: #7fb0ff;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #0D1117;
-      color: #e6edf3;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     .container {
       max-width: 720px;
       margin: 0 auto;
       padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
       margin-bottom: 56px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(230, 237, 243, 0.12);
+      border-bottom: 1px solid var(--border);
     }
 
     .logo {
       font-size: 15px;
       font-weight: 650;
-      color: #e6edf3;
+      color: var(--text);
       text-decoration: none;
       letter-spacing: 0.3px;
     }
@@ -57,12 +79,14 @@ const description = "The 30 day authority sprint for mapping ownership, decision
 
     nav a {
       font-size: 14px;
-      color: #b1bac4;
+      color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    nav a:hover { color: #e6edf3; }
+    nav a:hover { color: var(--text); }
+
+    main { flex: 1; }
 
     h1 {
       font-size: clamp(32px, 5vw, 46px);
@@ -75,23 +99,23 @@ const description = "The 30 day authority sprint for mapping ownership, decision
     .intro {
       font-size: 16px;
       line-height: 1.7;
-      color: #b1bac4;
-      margin-bottom: 18px;
+      color: var(--muted);
+      margin-bottom: 14px;
       max-width: 640px;
     }
 
     .subnote {
       font-size: 14px;
       line-height: 1.7;
-      color: #9aa4af;
+      color: var(--muted2);
       margin-bottom: 28px;
       max-width: 640px;
     }
 
     .section-label {
       font-size: 12px;
-      font-weight: 700;
-      color: #9aa4af;
+      font-weight: 800;
+      color: var(--muted2);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin: 40px 0 14px 0;
@@ -99,9 +123,9 @@ const description = "The 30 day authority sprint for mapping ownership, decision
 
     .resource-card {
       display: block;
-      background: rgba(230, 237, 243, 0.035);
-      border: 1px solid rgba(230, 237, 243, 0.10);
-      border-radius: 10px;
+      background: var(--panel);
+      border: 1px solid var(--border2);
+      border-radius: 12px;
       padding: 20px;
       margin-bottom: 12px;
       text-decoration: none;
@@ -109,7 +133,7 @@ const description = "The 30 day authority sprint for mapping ownership, decision
     }
 
     .resource-card:hover {
-      background: rgba(230, 237, 243, 0.055);
+      background: var(--panelHover);
       border-color: rgba(230, 237, 243, 0.18);
       transform: translateY(-1px);
     }
@@ -124,15 +148,15 @@ const description = "The 30 day authority sprint for mapping ownership, decision
 
     .resource-title {
       font-size: 16px;
-      font-weight: 700;
-      color: #e6edf3;
+      font-weight: 750;
+      color: var(--text);
       line-height: 1.35;
     }
 
     .resource-badge {
       font-size: 11px;
-      font-weight: 750;
-      color: #b1bac4;
+      font-weight: 850;
+      color: var(--muted);
       background: rgba(230, 237, 243, 0.06);
       border: 1px solid rgba(230, 237, 243, 0.12);
       padding: 4px 10px;
@@ -143,64 +167,124 @@ const description = "The 30 day authority sprint for mapping ownership, decision
       flex-shrink: 0;
     }
 
+    .resource-badge.free {
+      background: rgba(47, 129, 247, 0.16);
+      border-color: rgba(47, 129, 247, 0.30);
+      color: var(--accentText);
+    }
+
     .resource-desc {
       font-size: 14px;
       line-height: 1.6;
-      color: #b1bac4;
+      color: var(--muted);
       max-width: 640px;
     }
 
+    .resource-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .meta-pill {
+      font-size: 12px;
+      color: var(--muted2);
+      background: rgba(230, 237, 243, 0.04);
+      border: 1px solid rgba(230, 237, 243, 0.10);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .card-actions {
+      margin-top: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      user-select: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-primary:hover { background: var(--primaryHover); }
+
+    .btn-secondary {
+      background: rgba(230, 237, 243, 0.03);
+      color: var(--text);
+      border: 1px solid rgba(230, 237, 243, 0.10);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(230, 237, 243, 0.05);
+      border-color: rgba(230, 237, 243, 0.18);
+    }
+
     .featured-card {
-      background: rgba(47, 129, 247, 0.08);
-      border: 1px solid rgba(47, 129, 247, 0.28);
+      background: var(--accentPanel);
+      border: 1px solid var(--accentBorder);
     }
 
     .featured-card:hover {
-      background: rgba(47, 129, 247, 0.11);
-      border-color: rgba(47, 129, 247, 0.40);
+      background: var(--accentPanelHover);
+      border-color: var(--accentBorderHover);
     }
 
     .featured-card .resource-badge {
       background: rgba(47, 129, 247, 0.18);
       border-color: rgba(47, 129, 247, 0.34);
-      color: #7fb0ff;
+      color: var(--accentText);
     }
 
     .helper-box {
       margin-top: 18px;
       background: rgba(230, 237, 243, 0.03);
       border: 1px solid rgba(230, 237, 243, 0.10);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 18px 18px;
-      color: #b1bac4;
+      color: var(--muted);
       font-size: 14px;
       line-height: 1.65;
       max-width: 640px;
     }
 
-    .helper-box strong { color: #e6edf3; }
+    .helper-box strong { color: var(--text); }
 
     .contact {
       margin-top: 52px;
       padding-top: 36px;
-      border-top: 1px solid rgba(230, 237, 243, 0.12);
+      border-top: 1px solid var(--border);
       text-align: center;
       font-size: 14px;
-      color: #b1bac4;
+      color: var(--muted);
     }
 
-    .contact a { color: #2F81F7; text-decoration: none; }
+    .contact a { color: var(--primary); text-decoration: none; }
     .contact a:hover { text-decoration: underline; }
 
     footer {
       padding-top: 36px;
-      border-top: 1px solid rgba(230, 237, 243, 0.12);
+      border-top: 1px solid var(--border);
       font-size: 13px;
-      color: #9aa4af;
+      color: var(--muted2);
       margin-top: 56px;
     }
 
-    .footer-identity { margin-bottom: 12px; }
+    .footer-identity { margin-bottom: 12px; color: var(--muted); }
     .footer-links {
       display: flex;
       gap: 16px;
@@ -208,8 +292,8 @@ const description = "The 30 day authority sprint for mapping ownership, decision
       margin-bottom: 16px;
     }
 
-    footer a { color: #b1bac4; text-decoration: none; }
-    footer a:hover { color: #e6edf3; }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
 
     @media (max-width: 640px) {
       .container { padding: 32px 16px; }
@@ -230,63 +314,102 @@ const description = "The 30 day authority sprint for mapping ownership, decision
     </header>
 
     <main>
-      <h1>Address The Mess: The 30 Day Authority Sprint</h1>
+      <h1>Free Diagnostic Toolkit + 30-Day Sprint</h1>
 
       <p class="intro">
-        A structured 30 day process for mapping ownership, decision rights, and operational control across a real system in your environment.
+        Start with a free exercise to surface ownership and dependency risk. If it stings, run the 30-day sprint on one real system.
       </p>
 
       <p class="subnote">
-        The goal is a defensible internal outcome you can hand to leadership after four weeks of contained work.
+        No email • immediate downloads • built for messy environments.
       </p>
 
-      <div class="section-label">Start Here</div>
+      <!-- FREE FIRST -->
+      <div class="section-label">Free Diagnostic Toolkit</div>
 
-      <a href="https://2279442040293.gumroad.com/l/sjmcby" class="resource-card featured-card" target="_blank" rel="noopener noreferrer">
+      <!-- IMPORTANT: Ensure these filenames match your deployed files exactly. -->
+      <a href="/AssetHunt Walkthrough.pdf" class="resource-card" download>
         <div class="resource-card-header">
-          <div class="resource-title">Run the 30 Day Authority Sprint</div>
-          <div class="resource-badge">Gumroad</div>
+          <div class="resource-title">AssetHunt Walkthrough</div>
+          <div class="resource-badge free">FREE PDF</div>
         </div>
         <div class="resource-desc">
-          Identify ownership, verify dependencies, review access, and document what can safely change. Includes templates and outcome summary.
+          Locate unmanaged or unowned systems and document what you can verify in one pass.
+        </div>
+        <div class="resource-meta">
+          <span class="meta-pill">15–30 min</span>
+          <span class="meta-pill">Operators / IT managers</span>
+        </div>
+        <div class="card-actions">
+          <span class="btn btn-primary">Download FREE PDF</span>
         </div>
       </a>
 
-      <div class="helper-box">
-        <strong>Outcome:</strong> you end the month able to explain who owns the system, who can access it, what depends on it, and what change would be risky.
-      </div>
-
-      <div class="section-label">Supporting Materials</div>
-
-      <a href="/asset-walkthrough.pdf" class="resource-card" download>
+      <a href="/Week One Security Assessment.pdf" class="resource-card" download>
         <div class="resource-card-header">
-          <div class="resource-title">Field Exercise: Asset Discovery</div>
-          <div class="resource-badge">PDF</div>
+          <div class="resource-title">Week One Security Assessment</div>
+          <div class="resource-badge free">FREE PDF</div>
         </div>
         <div class="resource-desc">
-          Exercise for locating unmanaged or unowned systems and documenting what you can verify.
+          A week-one triage process to surface exposure, dependencies, and unclear ownership before controls.
         </div>
-      </a>
-
-      <a href="/Week One Security Assetment.pdf" class="resource-card" download>
-        <div class="resource-card-header">
-          <div class="resource-title">Week One Investigation</div>
-          <div class="resource-badge">PDF</div>
+        <div class="resource-meta">
+          <span class="meta-pill">45–60 min</span>
+          <span class="meta-pill">Security / IT leadership</span>
         </div>
-        <div class="resource-desc">
-          A starting process for understanding operational exposure before implementing controls.
+        <div class="card-actions">
+          <span class="btn btn-primary">Download FREE PDF</span>
         </div>
       </a>
 
       <a href="/ATM2.pdf" class="resource-card" download>
         <div class="resource-card-header">
           <div class="resource-title">Diagnostic Prompts</div>
-          <div class="resource-badge">PDF</div>
+          <div class="resource-badge free">FREE PDF</div>
         </div>
         <div class="resource-desc">
-          Questions used to surface ownership gaps and risky unknown dependencies.
+          Prompts designed to expose ownership gaps, decision paralysis, and risky unknown dependencies.
+        </div>
+        <div class="resource-meta">
+          <span class="meta-pill">10 min</span>
+          <span class="meta-pill">Anyone running discovery</span>
+        </div>
+        <div class="card-actions">
+          <span class="btn btn-primary">Download FREE PDF</span>
         </div>
       </a>
+
+      <div class="helper-box">
+        <strong>What these free tools give you:</strong> diagnosis and evidence.
+        <br>
+        <strong>What they don’t give you:</strong> the week-by-week execution system for turning findings into safe change.
+      </div>
+
+      <!-- PAID SECOND -->
+      <div class="section-label">Upgrade to the 30-Day Sprint</div>
+
+      <a href="https://2279442040293.gumroad.com/l/sjmcby" class="resource-card featured-card" target="_blank" rel="noopener noreferrer">
+        <div class="resource-card-header">
+          <div class="resource-title">Run the 30 Day Authority Sprint</div>
+          <div class="resource-badge">Paid • Gumroad</div>
+        </div>
+        <div class="resource-desc">
+          Turn diagnosis into execution: authority mapping, dependency verification, access review, and an outcome you can hand to leadership.
+          Includes templates and an outcome summary.
+        </div>
+        <div class="resource-meta">
+          <span class="meta-pill">30 days</span>
+          <span class="meta-pill">One system</span>
+          <span class="meta-pill">$9.99</span>
+        </div>
+        <div class="card-actions">
+          <span class="btn btn-secondary">View on Gumroad</span>
+        </div>
+      </a>
+
+      <div class="helper-box">
+        <strong>Outcome:</strong> you end the month able to explain who owns the system, who can access it, what depends on it, and what change would be risky — with a repeatable structure.
+      </div>
 
       <div class="contact">
         Questions? <a href="mailto:contact@djerhy.tech">contact@djerhy.tech</a>
@@ -294,9 +417,7 @@ const description = "The 30 day authority sprint for mapping ownership, decision
     </main>
 
     <footer>
-      <div class="footer-identity">
-        Djerhy Jn Baptiste • CISSP
-      </div>
+      <div class="footer-identity">Djerhy Jn Baptiste • CISSP</div>
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/djerhyjnbaptiste" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://x.com/JBDjerhy" target="_blank" rel="noopener noreferrer">X</a>
