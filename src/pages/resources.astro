@@ -1,6 +1,6 @@
 ---
-const title = "Resources | djerhy.tech";
-const description = "Free diagnostic tools for surfacing ownership and dependency risk — plus the 30-day authority sprint to execute.";
+const title = "Field Notes | djerhy.tech";
+const description = "Operational checks for messy environments. Run these before you change anything.";
 ---
 
 <!DOCTYPE html>
@@ -244,12 +244,6 @@ const description = "Free diagnostic tools for surfacing ownership and dependenc
       border-color: var(--accentBorderHover);
     }
 
-    .featured-card .resource-badge {
-      background: rgba(47, 129, 247, 0.18);
-      border-color: rgba(47, 129, 247, 0.34);
-      color: var(--accentText);
-    }
-
     .helper-box {
       margin-top: 18px;
       background: rgba(230, 237, 243, 0.03);
@@ -309,93 +303,95 @@ const description = "Free diagnostic tools for surfacing ownership and dependenc
       <a href="/" class="logo">djerhy.tech</a>
       <nav>
         <a href="/start-here">Start Here</a>
-        <a href="/resources">Resources</a>
+        <a href="/resources">Field Notes</a>
       </nav>
     </header>
 
     <main>
-      <h1>Free Diagnostic Toolkit + 30-Day Sprint</h1>
+      <h1>Run These Before You Change Anything</h1>
 
       <p class="intro">
-        Start with a free exercise to surface ownership and dependency risk. If it stings, run the 30-day sprint on one real system.
+        Start with a quick internal check to surface ownership and dependency risk.
+        If the answers aren't immediate, run the one-system sprint and turn uncertainty into a defensible plan.
       </p>
 
       <p class="subnote">
-        No email • immediate downloads • built for messy environments.
+        No email &bull; run it privately &bull; built for messy environments.
       </p>
 
       <!-- FREE FIRST -->
-      <div class="section-label">Free Diagnostic Toolkit</div>
+      <div class="section-label">Run First (Free)</div>
 
-      <!-- IMPORTANT: Ensure these filenames match your deployed files exactly. -->
-      <a href="/AssetHunt Walkthrough.pdf" class="resource-card" download>
+      <a href="/ATM2.pdf" class="resource-card">
         <div class="resource-card-header">
-          <div class="resource-title">AssetHunt Walkthrough</div>
-          <div class="resource-badge free">FREE PDF</div>
+          <div class="resource-title">Authority Checks</div>
+          <div class="resource-badge free">FREE</div>
         </div>
         <div class="resource-desc">
-          Locate unmanaged or unowned systems and document what you can verify in one pass.
-        </div>
-        <div class="resource-meta">
-          <span class="meta-pill">15–30 min</span>
-          <span class="meta-pill">Operators / IT managers</span>
-        </div>
-        <div class="card-actions">
-          <span class="btn btn-primary">Download FREE PDF</span>
-        </div>
-      </a>
-
-      <a href="/Week One Security Assessment.pdf" class="resource-card" download>
-        <div class="resource-card-header">
-          <div class="resource-title">Week One Security Assessment</div>
-          <div class="resource-badge free">FREE PDF</div>
-        </div>
-        <div class="resource-desc">
-          A week-one triage process to surface exposure, dependencies, and unclear ownership before controls.
-        </div>
-        <div class="resource-meta">
-          <span class="meta-pill">45–60 min</span>
-          <span class="meta-pill">Security / IT leadership</span>
-        </div>
-        <div class="card-actions">
-          <span class="btn btn-primary">Download FREE PDF</span>
-        </div>
-      </a>
-
-      <a href="/ATM2.pdf" class="resource-card" download>
-        <div class="resource-card-header">
-          <div class="resource-title">Diagnostic Prompts</div>
-          <div class="resource-badge free">FREE PDF</div>
-        </div>
-        <div class="resource-desc">
-          Prompts designed to expose ownership gaps, decision paralysis, and risky unknown dependencies.
+          Five immediate checks that reveal whether you have authority or just access. Each one takes under 10 minutes and produces a clear answer.
         </div>
         <div class="resource-meta">
           <span class="meta-pill">10 min</span>
           <span class="meta-pill">Anyone running discovery</span>
         </div>
         <div class="card-actions">
-          <span class="btn btn-primary">Download FREE PDF</span>
+          <span class="btn btn-primary">Run the checks</span>
+        </div>
+      </a>
+
+      <a href="/AssetHunt Walkthrough.pdf" class="resource-card">
+        <div class="resource-card-header">
+          <div class="resource-title">AssetHunt Walkthrough</div>
+          <div class="resource-badge free">FREE</div>
+        </div>
+        <div class="resource-desc">
+          A 30-minute physical inventory pass. Walk your space, log what you find, ask who owns it, and flag anything you cannot safely turn off.
+        </div>
+        <div class="resource-meta">
+          <span class="meta-pill">30 min</span>
+          <span class="meta-pill">Operators / IT managers</span>
+        </div>
+        <div class="card-actions">
+          <span class="btn btn-primary">Open walkthrough</span>
+        </div>
+      </a>
+
+      <a href="/Week One Security Assessment.pdf" class="resource-card">
+        <div class="resource-card-header">
+          <div class="resource-title">Week One Triage Walkthrough</div>
+          <div class="resource-badge free">FREE</div>
+        </div>
+        <div class="resource-desc">
+          A fictional FinTech scenario built for practical GRC walkthroughs. Use it to work through week-one triage: exposure, access gaps, unclear ownership, and vendor risk.
+        </div>
+        <div class="resource-meta">
+          <span class="meta-pill">45-60 min</span>
+          <span class="meta-pill">Security / IT leadership</span>
+        </div>
+        <div class="card-actions">
+          <span class="btn btn-primary">Open walkthrough</span>
         </div>
       </a>
 
       <div class="helper-box">
-        <strong>What these free tools give you:</strong> diagnosis and evidence.
-        <br>
-        <strong>What they don’t give you:</strong> the week-by-week execution system for turning findings into safe change.
+        <strong>What the free checks give you:</strong> a clear list of what you know vs what you are guessing about.<br>
+        <strong>What they don't give you:</strong> a structured way to turn those findings into safe change without losing weeks to meetings and backtracking.
       </div>
 
       <!-- PAID SECOND -->
-      <div class="section-label">Upgrade to the 30-Day Sprint</div>
+      <div class="section-label">Run Next (Paid)</div>
+
+      <p style="font-size: 14px; color: var(--muted2); margin-bottom: 14px;">
+        If you ran a check and found gaps you could not answer, this is the next step.
+      </p>
 
       <a href="https://2279442040293.gumroad.com/l/sjmcby" class="resource-card featured-card" target="_blank" rel="noopener noreferrer">
         <div class="resource-card-header">
-          <div class="resource-title">Run the 30 Day Authority Sprint</div>
-          <div class="resource-badge">Paid • Gumroad</div>
+          <div class="resource-title">Run the One-System Authority Sprint</div>
+          <div class="resource-badge">PAID &bull; ONE SYSTEM</div>
         </div>
         <div class="resource-desc">
-          Turn diagnosis into execution: authority mapping, dependency verification, access review, and an outcome you can hand to leadership.
-          Includes templates and an outcome summary.
+          A 30-day process to identify ownership and safely change one real system. Includes the authority mapping worksheet, zombie asset checklist, MVE enrichment schema, and decommissioning ROI calculator.
         </div>
         <div class="resource-meta">
           <span class="meta-pill">30 days</span>
@@ -403,12 +399,12 @@ const description = "Free diagnostic tools for surfacing ownership and dependenc
           <span class="meta-pill">$9.99</span>
         </div>
         <div class="card-actions">
-          <span class="btn btn-secondary">View on Gumroad</span>
+          <span class="btn btn-secondary">Run the Sprint</span>
         </div>
       </a>
 
       <div class="helper-box">
-        <strong>Outcome:</strong> you end the month able to explain who owns the system, who can access it, what depends on it, and what change would be risky — with a repeatable structure.
+        <strong>What you produce:</strong> an internal summary you can hand to your manager that answers four questions about a real system: who is accountable, who has access, what depends on it, and what change would be risky.
       </div>
 
       <div class="contact">
@@ -417,13 +413,13 @@ const description = "Free diagnostic tools for surfacing ownership and dependenc
     </main>
 
     <footer>
-      <div class="footer-identity">Djerhy Jn Baptiste • CISSP</div>
+      <div class="footer-identity">Djerhy Jn Baptiste &bull; CISSP</div>
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/djerhyjnbaptiste" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://x.com/JBDjerhy" target="_blank" rel="noopener noreferrer">X</a>
         <a href="https://www.credly.com/users/djerhy-jn-baptiste" target="_blank" rel="noopener noreferrer">Credly</a>
       </div>
-      <div>© 2026 djerhy.tech</div>
+      <div>&copy; 2026 djerhy.tech</div>
     </footer>
   </div>
 </body>
