@@ -1,6 +1,6 @@
 ---
 const title = "djerhy.tech";
-const description = "Asset intelligence is not inventory. It is operational understanding.";
+const description = "You can see your assets. You can't safely change them. Address The Mess fixes that.";
 ---
 
 <!DOCTYPE html>
@@ -10,350 +10,698 @@ const description = "Asset intelligence is not inventory. It is operational unde
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
   <meta name="description" content={description}>
-
-  <meta property="og:title" content={title}>
-  <meta property="og:description" content={description}>
-  <meta property="og:type" content="website">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg: #0D1117;
+      --bg2: #111820;
       --text: #e6edf3;
       --muted: #b1bac4;
-      --muted2: #9aa4af;
-      --border: rgba(230, 237, 243, 0.12);
-      --border2: rgba(230, 237, 243, 0.08);
-      --panel: rgba(230, 237, 243, 0.03);
-      --panel2: rgba(230, 237, 243, 0.05);
-      --primary: #2F81F7;
-      --primaryHover: #1E6AD8;
+      --muted2: #7d8896;
+      --border: rgba(230,237,243,0.10);
+      --border2: rgba(230,237,243,0.06);
+      --panel: rgba(230,237,243,0.03);
+      --panel2: rgba(230,237,243,0.055);
+      --blue: #2F81F7;
+      --blue-hover: #1E6AD8;
+      --blue-dim: rgba(47,129,247,0.10);
+      --blue-border: rgba(47,129,247,0.25);
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
     .container {
-      max-width: 760px;
+      max-width: 740px;
       margin: 0 auto;
-      padding: 40px 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Header */
-    header {
-      margin-bottom: 64px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-size: 15px;
-      font-weight: 650;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: 0.3px;
+      padding: 0 24px;
     }
 
     nav {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
       display: flex;
-      gap: 24px;
-      margin-top: 16px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    nav a {
+    .logo {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links { display: flex; gap: 28px; }
+
+    .nav-links a {
       font-size: 14px;
       color: var(--muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.15s;
     }
 
-    nav a:hover {
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 72px 0 60px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .hero-copy { max-width: 520px; }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5.5vw, 52px);
+      line-height: 1.07;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
       color: var(--text);
     }
 
-    /* Hero */
-    main {
-      flex: 1;
-    }
-
-    .hero {
-      margin-bottom: 36px;
-    }
-
-    h1 {
-      font-size: clamp(34px, 6vw, 54px);
-      line-height: 1.08;
-      font-weight: 750;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
+    .hero h1 em {
+      font-style: italic;
+      color: #7fb0ff;
     }
 
     .hero-sub {
-      font-size: 18px;
-      line-height: 1.65;
-      color: var(--muted);
-      margin-bottom: 16px;
-      max-width: 640px;
-    }
-
-    .hero-note {
-      font-size: 14px;
+      font-size: 17px;
       line-height: 1.7;
-      color: var(--muted2);
-      max-width: 640px;
-    }
-
-    /* Sections */
-    .section {
-      margin-top: 36px;
-    }
-
-    .section-title {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      margin-bottom: 12px;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .bullets li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.65;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(230, 237, 243, 0.04);
-    }
-
-    .bullets li:last-child {
-      border-bottom: none;
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(230, 237, 243, 0.35);
-      margin-top: 10px;
-      flex: 0 0 auto;
-    }
-
-    /* Typical situation card */
-    .card {
-      margin-top: 14px;
-      background: var(--panel);
-      border: 1px solid var(--border2);
-      border-radius: 12px;
-      padding: 18px 18px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    .card p + p {
-      margin-top: 10px;
-    }
-
-    /* CTAs */
-    .ctas {
-      margin-top: 36px;
-      display: grid;
-      gap: 14px;
+      margin-bottom: 32px;
     }
 
     .cta-primary {
-      display: block;
-      background: var(--primary);
-      color: white;
-      padding: 22px 22px;
-      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue);
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 10px;
       text-decoration: none;
-      transition: background 0.2s, transform 0.06s;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.15s, transform 0.08s;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 12px;
     }
 
-    .cta-primary:hover {
-      background: var(--primaryHover);
+    .cta-primary:hover { background: var(--blue-hover); }
+    .cta-primary:active { transform: translateY(1px); }
+
+    .cta-price {
+      font-size: 13px;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-left: 4px;
     }
 
-    .cta-primary:active {
-      transform: translateY(1px);
-    }
-
-    .cta-primary-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      letter-spacing: -0.01em;
-    }
-
-    .cta-primary-desc {
-      font-size: 14px;
-      opacity: 0.95;
-      font-weight: 450;
-    }
-
-    .cta-secondary {
+    .cta-secondary-link {
       display: block;
+      font-size: 14px;
+      color: var(--muted2);
+      text-decoration: none;
+      margin-top: 4px;
+      transition: color 0.15s;
+    }
+
+    .cta-secondary-link:hover { color: var(--muted); }
+
+    .hero-photo { width: 120px; flex-shrink: 0; }
+
+    .headshot-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--blue-border);
+      overflow: hidden;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .headshot-ring img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .credential {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--muted2);
+      text-transform: uppercase;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+    .story-section { padding: 56px 0; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      margin-bottom: 20px;
+    }
+
+    .story-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue) 0%, transparent 70%);
+    }
+
+    .story-headline {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .story-body {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .story-body p + p { margin-top: 14px; }
+
+    .story-outcome {
+      margin-top: 24px;
+      padding: 18px 20px;
+      background: var(--blue-dim);
+      border: 1px solid var(--blue-border);
+      border-radius: 10px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .story-outcome strong { color: #7fb0ff; }
+
+    .story-collapsed {
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
+      transition: height 0.45s ease, opacity 0.35s ease;
+    }
+
+    .story-collapsed.open { opacity: 1; }
+
+    .story-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #7fb0ff;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      transition: opacity 0.15s;
+    }
+
+    .story-toggle:hover { opacity: 0.75; }
+    .story-toggle svg { transition: transform 0.3s ease; }
+    .story-toggle.open svg { transform: rotate(180deg); }
+
+    .recognition {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .recognition-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .rec-item {
       background: var(--panel);
       border: 1px solid var(--border2);
-      color: var(--text);
+      border-radius: 10px;
       padding: 16px 18px;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s, transform 0.06s;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
     }
 
-    .cta-secondary:hover {
-      background: var(--panel2);
-      border-color: rgba(230, 237, 243, 0.16);
+    .rec-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      margin-top: 8px;
+      flex-shrink: 0;
+      opacity: 0.7;
     }
 
-    .cta-secondary:active {
-      transform: translateY(1px);
+    .sprint-section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .cta-secondary-title {
+    .sprint-card {
+      background: var(--blue-dim);
+      border: 1px solid var(--blue-border);
+      border-radius: 14px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sprint-card::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,129,247,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .sprint-label {
+      font-size: 11px;
       font-weight: 700;
-      margin-bottom: 2px;
-      font-size: 15px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7fb0ff;
+      margin-bottom: 10px;
     }
 
-    .cta-secondary-desc {
+    .sprint-title {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .sprint-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 22px;
+      max-width: 500px;
+    }
+
+    .sprint-outputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .sprint-output {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    /* Footer */
-    footer {
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(47,129,247,0.2);
+      border: 1px solid rgba(47,129,247,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .check-icon svg { width: 8px; height: 8px; }
+
+    .sprint-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-sprint {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 15px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.15s, transform 0.08s;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .btn-sprint:hover { background: var(--blue-hover); }
+    .btn-sprint:active { transform: translateY(1px); }
+
+    .sprint-meta {
       font-size: 13px;
       color: var(--muted2);
-      margin-top: 56px;
+      line-height: 1.6;
     }
 
-    .footer-identity {
-      margin-bottom: 12px;
-      color: var(--muted);
+    .free-section {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .footer-links {
+    .free-note {
+      font-size: 14px;
+      color: var(--muted2);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .free-grid { display: grid; gap: 10px; }
+
+    .free-card {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    footer a {
-      color: var(--muted);
+      background: var(--panel);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 16px 20px;
       text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
     }
 
-    footer a:hover {
+    .free-card:hover {
+      background: var(--panel2);
+      border-color: var(--border);
+    }
+
+    .free-card-title {
+      font-size: 14px;
+      font-weight: 600;
       color: var(--text);
+      margin-bottom: 2px;
     }
 
-    @media (max-width: 640px) {
-      .container {
-        padding: 32px 16px;
-      }
+    .free-card-desc { font-size: 13px; color: var(--muted2); }
 
-      header {
-        margin-bottom: 48px;
-      }
+    .free-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--muted2);
+      background: rgba(230,237,243,0.05);
+      border: 1px solid var(--border2);
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
-      h1 {
-        font-size: 32px;
-      }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
 
-      .hero-sub {
-        font-size: 16px;
-      }
+    .footer-id { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { width: 100%; font-size: 12px; color: var(--muted2); margin-top: 4px; }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; padding: 48px 0 40px; }
+      .hero-photo { order: -1; display: flex; gap: 16px; align-items: center; width: auto; }
+      .headshot-ring { width: 72px; height: 72px; }
+      .recognition-grid, .sprint-outputs { grid-template-columns: 1fr; }
+      .story-card, .sprint-card { padding: 24px; }
+      footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <a href="/" class="logo">djerhy.tech</a>
-      <nav>
-        <a href="/start-here">Start Here</a>
-        <a href="/resources">Field Notes</a>
-      </nav>
-    </header>
 
-    <main>
-      <section class="hero">
-        <h1>Asset intelligence is not inventory.<br>It is operational understanding.</h1>
-        <p class="hero-sub">
-          Address The Mess clarifies who owns what, what depends on what, and who can approve a change without guessing.
-        </p>
-        <p class="hero-note">
-          Start small: pick one system. Map the dependencies. Make one decision safe.
-        </p>
-      </section>
+<div class="container">
+  <nav>
+    <a href="/" class="logo">djerhy.tech</a>
+    <div class="nav-links">
+      <a href="/start-here">Start Here</a>
+      <a href="/field-notes">Field Notes</a>
+    </div>
+  </nav>
+</div>
 
-      <section class="section">
-        <div class="section-title">This helps if</div>
-        <ul class="bullets">
-          <li><span class="dot"></span><span>Upgrades keep getting delayed because dependencies are unclear.</span></li>
-          <li><span class="dot"></span><span>Nobody can confidently approve a change.</span></li>
-          <li><span class="dot"></span><span>Systems work, but ownership is informal or unclear.</span></li>
-          <li><span class="dot"></span><span>An audit or renewal forces a last-minute scramble.</span></li>
-          <li><span class="dot"></span><span>Inherited infrastructure makes every change feel risky.</span></li>
-        </ul>
-      </section>
-
-      <section class="ctas">
-        <a href="/start-here" class="cta-primary">
-          <div class="cta-primary-title">Run the 10-Minute Clarity Check</div>
-          <div class="cta-primary-desc">Quick prompts that show whether you have visibility or just inventory. No signup. No sales deck.</div>
-        </a>
-
-        <a href="/resources" class="cta-secondary">
-          <div class="cta-secondary-title">Run Address The Mess</div>
-          <div class="cta-secondary-desc">Scope, steps, and outcomes: mapped ownership, surfaced dependencies, and a defensible change plan.</div>
-        </a>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-identity">Djerhy Jn Baptiste • CISSP</div>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/djerhyjnbaptiste" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://x.com/JBDjerhy" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="https://www.credly.com/users/djerhy-jn-baptiste" target="_blank" rel="noopener noreferrer">Credly</a>
+<div class="container">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Asset Intelligence</div>
+      <h1>You can see your assets.<br><em>You can't safely change them.</em></h1>
+      <p class="hero-sub">
+        Address The Mess maps who owns what, what depends on what, and who can approve a change - so your next move isn't a guess.
+      </p>
+      <a href="https://2279442040293.gumroad.com/l/sjmcby" class="cta-primary" target="_blank" rel="noopener noreferrer">
+        Run the One-System Sprint <span class="cta-price">- $9.99</span>
+      </a>
+      <a href="/start-here" class="cta-secondary-link">Not sure yet? Run the free checks first →</a>
+    </div>
+    <div class="hero-photo">
+      <div>
+        <div class="headshot-ring">
+          <img src="/djerhy.png" alt="Djerhy Jn Baptiste">
+        </div>
+        <div class="credential">Djerhy Jn Baptiste · CISSP</div>
       </div>
-      <div>© 2026 djerhy.tech</div>
-    </footer>
-  </div>
+    </div>
+  </section>
+</div>
+
+<div class="divider"></div>
+
+<div class="container">
+  <section class="story-section">
+    <div class="section-label">A real situation</div>
+    <div class="story-card">
+      <div class="story-headline">They thought they had a bandwidth problem.<br>They had a clarity problem.</div>
+      <div class="story-collapsed" id="storyBody">
+        <div class="story-body">
+          <p>A community fairground asked for help upgrading their connectivity. The telecom rooms told the real story: equipment from different eras, different vendors, different purposes. Some devices were active. Some were merely powered. Some were tied to services no one could explain. No one could say what could be safely disconnected.</p>
+          <p>The facility was seasonal - critical infrastructure during events, quiet the rest of the year. Staff rotated, knowledge left with people, and changes accumulated while documentation did not. The real risk wasn't slow internet. It was disabling something the organization depended on without realizing it.</p>
+          <p>Before discussing speeds or providers, we traced circuits building by building. We separated live services from powered residue, identified which lines were still under contract, and asked who actually had authority to remove them.</p>
+        </div>
+        <div class="story-outcome">
+          <strong>Once the environment was understood, decisions became straightforward.</strong> Legacy services were retired safely. Event Wi-Fi was added without exposing internal systems. A primary connection and inexpensive failover were planned with confidence.<br><br>
+          The technology was ordinary. The outcome was not. They could finally change their infrastructure without fear.
+        </div>
+      </div>
+      <button class="story-toggle" id="storyToggle">
+        <span id="toggleLabel">Read what happened</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 5l5 5 5-5" stroke="#7fb0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="recognition">
+    <div class="section-label">This is for you if</div>
+    <div class="recognition-grid">
+      <div class="rec-item"><span class="rec-dot"></span><span>Upgrades keep getting delayed because dependencies are unclear.</span></div>
+      <div class="rec-item"><span class="rec-dot"></span><span>Nobody can confidently approve a change.</span></div>
+      <div class="rec-item"><span class="rec-dot"></span><span>Systems work, but ownership is informal or undocumented.</span></div>
+      <div class="rec-item"><span class="rec-dot"></span><span>An audit or renewal forces a last-minute scramble.</span></div>
+      <div class="rec-item"><span class="rec-dot"></span><span>You inherited infrastructure and every change feels risky.</span></div>
+      <div class="rec-item"><span class="rec-dot"></span><span>Discovery tools give you a list - not an answer.</span></div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="sprint-section">
+    <div class="sprint-card">
+      <div class="sprint-label">Paid · One System · 30 Days</div>
+      <div class="sprint-title">Run the One-System Authority Sprint</div>
+      <p class="sprint-desc">
+        A structured 30-day process to map ownership and safely change one real system. You produce a document you can hand to your manager - not a theory, a defensible plan.
+      </p>
+      <div class="sprint-outputs">
+        <div class="sprint-output">
+          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Who is accountable for this system</span>
+        </div>
+        <div class="sprint-output">
+          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Who has access and why</span>
+        </div>
+        <div class="sprint-output">
+          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>What depends on it</span>
+        </div>
+        <div class="sprint-output">
+          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>What change would be risky</span>
+        </div>
+      </div>
+      <div class="sprint-cta-row">
+        <a href="https://2279442040293.gumroad.com/l/sjmcby" class="btn-sprint" target="_blank" rel="noopener noreferrer">
+          Get the Sprint - $9.99
+        </a>
+        <div class="sprint-meta">
+          Includes authority mapping worksheet,<br>zombie asset checklist &amp; ROI calculator.
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <section class="free-section">
+    <div class="section-label">Not ready yet? Start free.</div>
+    <p class="free-note">Run these privately before involving anyone else. Each one takes under an hour and shows you exactly where your gaps are.</p>
+    <div class="free-grid">
+      <a href="/ATM2.pdf" class="free-card">
+        <div>
+          <div class="free-card-title">Authority Checks</div>
+          <div class="free-card-desc">Five checks that reveal whether you have authority or just access. 10 min.</div>
+        </div>
+        <span class="free-badge">Free</span>
+      </a>
+      <a href="/AssetHunt Walkthrough.pdf" class="free-card">
+        <div>
+          <div class="free-card-title">AssetHunt Walkthrough</div>
+          <div class="free-card-desc">A 30-minute physical inventory pass. Walk your space, log what you find.</div>
+        </div>
+        <span class="free-badge">Free</span>
+      </a>
+      <a href="/Week One Security Assessment.pdf" class="free-card">
+        <div>
+          <div class="free-card-title">Week One Triage Walkthrough</div>
+          <div class="free-card-desc">Fictional FinTech scenario for GRC walkthroughs. Exposure, access gaps, vendor risk.</div>
+        </div>
+        <span class="free-badge">Free</span>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <footer>
+    <div>
+      <div class="footer-id">Djerhy Jn Baptiste · CISSP</div>
+      <div class="footer-copy">© 2026 djerhy.tech</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/djerhyjnbaptiste" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/JBDjerhy" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://www.credly.com/users/djerhy-jn-baptiste" target="_blank" rel="noopener noreferrer">Credly</a>
+    </div>
+  </footer>
+</div>
+
+<script is:inline>
+  (function () {
+    function initToggle() {
+      const body = document.getElementById('storyBody');
+      const toggle = document.getElementById('storyToggle');
+      const label = document.getElementById('toggleLabel');
+
+      if (!toggle || !body || !label) return;
+
+      toggle.addEventListener('click', function () {
+        const isOpen = body.classList.contains('open');
+
+        if (!isOpen) {
+          body.style.height = body.scrollHeight + 'px';
+          body.classList.add('open');
+          toggle.classList.add('open');
+          label.textContent = 'Collapse';
+        } else {
+          body.style.height = body.scrollHeight + 'px';
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              body.style.height = '0';
+              body.classList.remove('open');
+              toggle.classList.remove('open');
+              label.textContent = 'Read what happened';
+            });
+          });
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initToggle);
+    } else {
+      initToggle();
+    }
+  })();
+</script>
+
 </body>
 </html>

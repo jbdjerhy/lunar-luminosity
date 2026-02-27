@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Notes | djerhy.tech</title>
+  <meta name="description" content="Practitioner observations on asset management, infrastructure, and operational clarity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0D1117;
+      --bg2: #111820;
+      --text: #e6edf3;
+      --muted: #b1bac4;
+      --muted2: #7d8896;
+      --border: rgba(230,237,243,0.10);
+      --border2: rgba(230,237,243,0.06);
+      --panel: rgba(230,237,243,0.03);
+      --panel2: rgba(230,237,243,0.055);
+      --blue: #2F81F7;
+      --blue-hover: #1E6AD8;
+      --blue-dim: rgba(47,129,247,0.10);
+      --blue-border: rgba(47,129,247,0.25);
+      --accent: #7fb0ff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .page-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 5vw, 46px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .page-intro {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* NOTES LIST */
+    .notes-list {
+      padding: 56px 0;
+    }
+
+    /* INDIVIDUAL NOTE */
+    .note {
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .note:last-child {
+      border-bottom: none;
+    }
+
+    .note-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .note-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+
+    .note-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      background: var(--panel2);
+      border: 1px solid var(--border2);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .note h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .note-body {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .note-body p + p {
+      margin-top: 16px;
+    }
+
+    .note-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .note-body em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      margin: 28px 0;
+      padding: 20px 24px;
+      border-left: 2px solid var(--blue);
+      background: var(--panel);
+      border-radius: 0 10px 10px 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* Numbered list inside note */
+    .note-list {
+      margin: 20px 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .note-list-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .note-list-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-top: 3px;
+      font-family: 'Fraunces', serif;
+    }
+
+    .note-list-content {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .note-list-content strong {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* Bullet list */
+    .note-bullets {
+      margin: 16px 0 16px 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .note-bullet {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .bullet-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      margin-top: 9px;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    /* Closing line */
+    .note-closer {
+      margin-top: 24px;
+      padding: 18px 20px;
+      background: var(--blue-dim);
+      border: 1px solid var(--blue-border);
+      border-radius: 10px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* SPRINT NUDGE */
+    .sprint-nudge {
+      margin: 56px 0;
+      padding: 28px 32px;
+      background: var(--blue-dim);
+      border: 1px solid var(--blue-border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .sprint-nudge-copy {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 420px;
+    }
+
+    .sprint-nudge-copy p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .btn-sprint {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: background 0.15s, transform 0.08s;
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .btn-sprint:hover { background: var(--blue-hover); }
+    .btn-sprint:active { transform: translateY(1px); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-id {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted2);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      width: 100%;
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 4px;
+    }
+
+    /* FADE IN */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .note {
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .note:nth-child(1) { animation-delay: 0.05s; }
+    .note:nth-child(2) { animation-delay: 0.15s; }
+    .note:nth-child(3) { animation-delay: 0.25s; }
+
+    @media (max-width: 600px) {
+      .page-header { padding: 48px 0 36px; }
+      .sprint-nudge { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <a href="/" class="logo">djerhy.tech</a>
+    <div class="nav-links">
+      <a href="/start-here">Start Here</a>
+      <a href="/field-notes" class="active">Field Notes</a>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <header class="page-header">
+    <div class="page-eyebrow">Field Notes</div>
+    <h1>Observations from the field.</h1>
+    <p class="page-intro">
+      Patterns that keep showing up across environments, industries, and budget tiers. No frameworks. No theory. Just what actually happens when you look closely at infrastructure.
+    </p>
+  </header>
+</div>
+
+<div class="container">
+  <section class="notes-list">
+
+    <!-- NOTE 1: FRANK -->
+    <article class="note">
+      <div class="note-meta">
+        <span class="note-number">No. 01</span>
+        <span class="note-tag">Ownership</span>
+      </div>
+      <h2>Everyone Has a Frank.</h2>
+      <div class="note-body">
+        <p>In earlier roles across a wide spectrum of customer industries and budget tiers, I was selling on-premise network security hardware, and one particular pattern kept showing up in initial conversations.</p>
+        <p>We'd get on a call with a local team, someone would pull up a diagram - reasonable looking, the compliance checkbox kind - and within a few minutes of asking basic questions about what was upstream or when something had last been touched, the diagram didn't match the room. After a few minutes of the team looking at each other, someone would reach for their phone.</p>
+
+        <div class="pull-quote">"Let's call Frank. He's the one who set this up."</div>
+
+        <p>Frank isn't one person. He's the semi-retired consultant who still gets the call at 8pm, the long-tenured IT manager who was never given a real handoff because the organization quietly assumed he'd just always be there. He knows why that VLAN is named that, why one account can never be touched, why that server hasn't been rebooted since the second Obama administration.</p>
+        <p>He also warned against the Grand Redesign pushed through by someone who was pitched some revolutionary tool at a conference, then got the call when it failed and fixed it, because that's what he does. What Frank held together kept the lights on for a decade or more, and the institutional knowledge that never made it into documentation lived in his head because "it works as is" has a way of winning budget conversations, every single time.</p>
+        <p>That dependability had a quiet cost though: the environment was no longer understood by the organization, but by a person. There is no negligence or malice behind it; the gap just accumulated, one decision at a time. Now Frank, the proverbial old guard, is stepping back, and the generation behind him is moving higher in the stack toward sexier career trajectories. The layer he occupied is getting thinner across a lot of organizations, and it's only obvious when something breaks.</p>
+        <p>What stayed with me from those calls wasn't Frank's knowledge, impressive as it was. It was what those moments uncovered: a business that couldn't accurately describe its own infrastructure to an outside vendor. That's not a technology gap, that's an organizational one.</p>
+        <p>The Franks I've come across weren't people who let things slide or lacked the initiative to document. They were people who carried more than their job description said, longer than was reasonable, on behalf of organizations that didn't understand what they were holding until they needed to call someone.</p>
+
+        <div class="note-closer">
+          The org can still see everything Frank built. What walked out with him was the only person who knew what was actually safe to act on, and whether anyone even had the authority to.
+        </div>
+      </div>
+    </article>
+
+    <!-- NOTE 2: SAND AT THE BEACH -->
+    <article class="note">
+      <div class="note-meta">
+        <span class="note-number">No. 02</span>
+        <span class="note-tag">Asset Waste</span>
+      </div>
+      <h2>I Didn't Sell Much Sand at the Beach.</h2>
+      <div class="note-body">
+        <p>Good salespeople can sell sand at the beach. During the pandemic, I took a stab at it: trying to sell high-speed internet and on-prem firewalls to hospitality businesses while the industry was bleeding cash. Hotels with half their rooms dark. Restaurants at 30% capacity. Event spaces turned into ghost towns.</p>
+        <p>It wasn't just a tough market. It was a test of purpose.</p>
+        <p>I quickly realized pushing upgrades made no sense when customers were struggling to stay open. So instead of selling more, I helped them see what they already had.</p>
+        <p>We combed through stale contracts and eliminated waste: legacy POTS lines, idle T1 circuits, and month-to-month renewals that should have been retired years ago.</p>
+        <p>Sometimes the best deal wasn't a new service, it was a cleanup. We moved from expensive analog lines to VoIP, retired old firewalls, consolidated redundant circuits, and freed up budgets trapped in outdated infrastructure.</p>
+
+        <div class="pull-quote">That shift - from selling upgrades to managing assets - taught me a lesson I still carry today.</div>
+
+        <p>In sales, waste hides in forgotten contracts and idle circuits. In GRC and security, it's shadow IT, zombie servers, and over-provisioned cloud resources. Different domains, same problem: you can't optimize or secure what you don't know exists.</p>
+
+        <div class="note-closer">
+          Whether you're managing infrastructure or risk, optimization isn't about doing more. It's about seeing clearer.
+        </div>
+      </div>
+    </article>
+
+    <!-- NOTE 3: WHERE IT STARTED -->
+    <article class="note">
+      <div class="note-meta">
+        <span class="note-number">No. 03</span>
+        <span class="note-tag">Origin</span>
+      </div>
+      <h2>Where It Started.</h2>
+      <div class="note-body">
+        <p>My interest in asset management didn't come from a classroom. It started the moment I became a Technical Account Manager.</p>
+        <p>Within my first few months, two patterns emerged that reshaped how I thought about infrastructure.</p>
+
+        <div class="note-list">
+          <div class="note-list-item">
+            <span class="note-list-num">01</span>
+            <div class="note-list-content">
+              <strong>Refresh projects with missing context.</strong>
+              The hardest part of any upgrade wasn't the technical work. It was figuring out what customers already had. Small businesses with no IT staff, multi-location enterprises with scattered records across vendors, companies that had cycled through multiple MSPs. Everyone had pieces of the story. No one had the full map. It felt like trying to build on a foundation no one had fully documented.
+            </div>
+          </div>
+          <div class="note-list-item">
+            <span class="note-list-num">02</span>
+            <div class="note-list-content">
+              <strong>The server room reality check.</strong>
+              Installs, upgrades, decommissions - every visit revealed the same patterns.
+            </div>
+          </div>
+        </div>
+
+        <div class="note-bullets">
+          <div class="note-bullet"><span class="bullet-dot"></span><span>Deprecated hardware still in production</span></div>
+          <div class="note-bullet"><span class="bullet-dot"></span><span>Duplicated systems</span></div>
+          <div class="note-bullet"><span class="bullet-dot"></span><span>Equipment nobody remembered deploying</span></div>
+          <div class="note-bullet"><span class="bullet-dot"></span><span>Orphaned switches</span></div>
+          <div class="note-bullet"><span class="bullet-dot"></span><span>Dead equipment still drawing power</span></div>
+        </div>
+
+        <p>Inefficient, harder to secure, and expensive to maintain.</p>
+
+        <div class="note-closer">
+          You can't optimize what you can't see. And every gap in visibility costs you in time, money, or risk.
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- SPRINT NUDGE -->
+  <div class="sprint-nudge">
+    <div class="sprint-nudge-copy">
+      <strong>Recognize any of these patterns?</strong>
+      <p>The One-System Authority Sprint turns that recognition into a defensible plan for one real system in 30 days.</p>
+    </div>
+    <a href="https://2279442040293.gumroad.com/l/sjmcby" class="btn-sprint" target="_blank" rel="noopener noreferrer">
+      Get the Sprint - $9.99
+    </a>
+  </div>
+
+  <footer>
+    <div>
+      <div class="footer-id">Djerhy Jn Baptiste · CISSP</div>
+      <div class="footer-copy">© 2026 djerhy.tech</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/djerhyjnbaptiste" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://x.com/JBDjerhy" target="_blank" rel="noopener noreferrer">X</a>
+      <a href="https://www.credly.com/users/djerhy-jn-baptiste" target="_blank" rel="noopener noreferrer">Credly</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
