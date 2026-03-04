@@ -1,6 +1,6 @@
 ---
 const title = "Start Here | djerhy.tech";
-const description = "Find out if you have control or just visibility. Five checks, free resources, and a path forward.";
+const description = "Five checks that tell you whether your organization has control or just visibility. Free or paid access to Address The Mess.";
 ---
 
 <!DOCTYPE html>
@@ -49,6 +49,7 @@ const description = "Find out if you have control or just visibility. Five check
       -webkit-font-smoothing: antialiased;
     }
     .container { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
     nav {
       padding: 22px 0;
       border-bottom: 1px solid var(--border);
@@ -61,6 +62,7 @@ const description = "Find out if you have control or just visibility. Five check
     .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
     .nav-links a.active { color: var(--text); }
+
     .page-header { padding: 64px 0 48px; }
     .page-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
     .page-header h1 {
@@ -73,59 +75,37 @@ const description = "Find out if you have control or just visibility. Five check
       color: var(--muted);
     }
     .page-intro { font-size: 15px; line-height: 1.7; color: var(--muted2); max-width: 560px; }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 20px; }
+
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
     .section-label-primary {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 10px;
     }
     .section-label-primary::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
     .checks-section { padding: 48px 0 0; }
     .checks-intro { font-size: 14px; color: var(--muted2); margin-bottom: 24px; line-height: 1.6; }
     .check-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 12px;
-      transition: border-color 0.2s;
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; margin-bottom: 12px; transition: border-color 0.2s;
     }
     .check-card.answered { border-color: rgba(230,237,243,0.15); }
     .check-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 14px; }
     .check-number { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 6px; }
     .check-title { font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.3; }
     .check-status {
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      border: 1.5px solid var(--border);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      margin-top: 2px;
+      width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--border);
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; margin-top: 2px;
     }
     .check-status.done { background: var(--green); border-color: var(--green); }
     .check-body { font-size: 14px; line-height: 1.75; color: var(--muted); margin-bottom: 18px; }
     .check-body em { color: var(--text); font-style: italic; }
     .answer-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .answer-btn {
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--muted);
-      transition: all 0.15s;
+      padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      font-family: inherit; cursor: pointer; border: 1px solid var(--border);
+      background: var(--panel); color: var(--muted); transition: all 0.15s;
     }
     .answer-btn:hover { background: var(--panel2); border-color: rgba(230,237,243,0.18); color: var(--text); }
     .answer-btn.selected-clear { background: var(--green-dim); border-color: var(--green-border); color: var(--green); }
@@ -136,25 +116,94 @@ const description = "Find out if you have control or just visibility. Five check
     .check-result.clear { background: var(--green-dim); border: 1px solid var(--green-border); color: var(--green); }
     .check-result.gap { background: var(--red-dim); border: 1px solid var(--red-border); color: #fca5a5; }
     .check-result.unsure { background: var(--amber-dim); border: 1px solid var(--amber-border); color: var(--amber); }
-    .results-panel { display: none; margin: 32px 0 0; padding: 28px 32px; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; animation: fadeUp 0.35s ease both; }
+
+    .results-panel {
+      display: none; margin: 32px 0 0; padding: 28px 32px;
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 14px; animation: fadeUp 0.35s ease both;
+    }
     .results-panel.show { display: block; }
     .results-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
-    .results-summary { font-size: 15px; line-height: 1.7; color: var(--muted); margin-bottom: 20px; }
-    .results-score { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .results-score { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
     .score-pill { padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; }
     .score-pill.clear { background: var(--green-dim); border: 1px solid var(--green-border); color: var(--green); }
     .score-pill.gap { background: var(--red-dim); border: 1px solid var(--red-border); color: #fca5a5; }
     .score-pill.unsure { background: var(--amber-dim); border: 1px solid var(--amber-border); color: var(--amber); }
-    .results-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue); color: #fff; padding: 14px 22px;
-      border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
-      transition: background 0.15s, transform 0.08s; border: 1px solid rgba(255,255,255,0.08);
+    .results-summary { font-size: 15px; line-height: 1.7; color: var(--muted); margin-bottom: 28px; }
+
+    .offer-divider { border-top: 1px solid var(--border); padding-top: 24px; }
+    .offer-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .offer-card {
+      border-radius: 12px; padding: 22px; border: 1px solid var(--border);
+      background: var(--panel); display: flex; flex-direction: column; gap: 10px;
     }
-    .results-cta:hover { background: var(--blue-hover); }
-    .results-cta:active { transform: translateY(1px); }
-    .results-secondary { display: block; margin-top: 10px; font-size: 13px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
-    .results-secondary:hover { color: var(--muted); }
+    .offer-card.contribute { border-color: var(--green-border); background: var(--green-dim); }
+    .offer-card.buy { border-color: var(--blue-border); background: var(--blue-dim); }
+    .offer-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .offer-card.contribute .offer-card-label { color: var(--green); }
+    .offer-card.buy .offer-card-label { color: var(--accent); }
+    .offer-card-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; line-height: 1.2; color: var(--text); }
+    .offer-card-desc { font-size: 13px; line-height: 1.65; color: var(--muted); flex: 1; }
+
+    /* Contribute form */
+    .contribute-form { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .contribute-input {
+      width: 100%; padding: 9px 13px;
+      background: rgba(0,0,0,0.25); border: 1px solid var(--green-border);
+      border-radius: 7px; color: var(--text); font-family: inherit;
+      font-size: 13px; outline: none; transition: border-color 0.15s;
+    }
+    .contribute-input::placeholder { color: var(--muted2); }
+    .contribute-input:focus { border-color: var(--green); }
+    .contribute-submit {
+      width: 100%; padding: 10px; background: var(--green); color: #0D1117;
+      border: none; border-radius: 7px; font-family: inherit; font-size: 13px;
+      font-weight: 700; cursor: pointer; transition: opacity 0.15s;
+    }
+    .contribute-submit:hover { opacity: 0.88; }
+
+    /* Confirmation shown after submit */
+    .contribute-confirm {
+      display: none;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--green-border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .contribute-confirm-title {
+      font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 10px;
+    }
+    .contribute-confirm-body {
+      font-size: 13px; color: var(--muted); line-height: 1.65;
+    }
+    .download-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px; padding: 9px 16px;
+      background: var(--green); color: #0D1117;
+      border-radius: 7px; font-size: 13px; font-weight: 700;
+      text-decoration: none; transition: opacity 0.15s;
+    }
+    .download-link:hover { opacity: 0.88; }
+    .survey-link {
+      display: block; margin-top: 10px;
+      font-size: 12px; color: var(--muted2);
+      text-decoration: underline; text-underline-offset: 2px;
+      transition: color 0.15s;
+    }
+    .survey-link:hover { color: var(--muted); }
+    .offer-note { font-size: 11px; color: var(--muted2); line-height: 1.5; }
+
+    /* Buy CTA */
+    .btn-buy {
+      display: block; width: 100%; text-align: center;
+      padding: 10px; background: var(--blue); color: #fff;
+      border: none; border-radius: 7px; font-family: inherit;
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      transition: background 0.15s; margin-top: 4px;
+    }
+    .btn-buy:hover { background: var(--blue-hover); }
+
     .section-divider { height: 1px; background: var(--border); margin: 56px 0; }
     .resources-section { padding-bottom: 20px; }
     .resources-intro { font-size: 14px; color: var(--muted2); margin-bottom: 20px; line-height: 1.65; }
@@ -173,28 +222,7 @@ const description = "Find out if you have control or just visibility. Five check
       background: rgba(230,237,243,0.05); border: 1px solid var(--border2);
       padding: 4px 10px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
     }
-    .sprint-section { padding: 0 0 56px; }
-    .sprint-card {
-      background: var(--blue-dim); border: 1px solid var(--blue-border);
-      border-radius: 14px; padding: 28px 32px; position: relative; overflow: hidden;
-    }
-    .sprint-card::after {
-      content: ''; position: absolute; top: -60px; right: -60px;
-      width: 200px; height: 200px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(47,129,247,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .sprint-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .sprint-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
-    .sprint-desc { font-size: 14px; line-height: 1.7; color: var(--muted); margin-bottom: 20px; max-width: 480px; }
-    .btn-sprint {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue); color: #fff; padding: 14px 22px;
-      border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 14px;
-      transition: background 0.15s, transform 0.08s; border: 1px solid rgba(255,255,255,0.08);
-    }
-    .btn-sprint:hover { background: var(--blue-hover); }
-    .btn-sprint:active { transform: translateY(1px); }
+
     footer {
       border-top: 1px solid var(--border); padding: 36px 0 40px;
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
@@ -204,10 +232,13 @@ const description = "Find out if you have control or just visibility. Five check
     .footer-links a { font-size: 13px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
     .footer-links a:hover { color: var(--text); }
     .footer-copy { width: 100%; font-size: 12px; color: var(--muted2); margin-top: 4px; }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
     @media (max-width: 600px) {
       .page-header { padding: 48px 0 36px; }
-      .sprint-card { padding: 22px 20px; }
+      .results-panel { padding: 22px 20px; }
+      .offer-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: flex-start; }
       .answer-row { flex-direction: column; }
       .answer-btn { text-align: center; }
@@ -313,8 +344,52 @@ const description = "Find out if you have control or just visibility. Five check
       <div class="results-title" id="resultsTitle"></div>
       <div class="results-score" id="resultsScore"></div>
       <div class="results-summary" id="resultsSummary"></div>
-      <a href="https://2279442040293.gumroad.com/l/sjmcby" class="results-cta" target="_blank" rel="noopener noreferrer">Get the Sprint - $47.00</a>
-      <a href="#free-resources" class="results-secondary" id="resultsSecondary">Or start with the free resources below</a>
+
+      <div class="offer-divider">
+        <div class="offer-label">Get Address The Mess</div>
+        <div class="offer-grid">
+
+          <div class="offer-card contribute">
+            <div class="offer-card-label">Contribute</div>
+            <div class="offer-card-title">Get it free. Share what you find.</div>
+            <div class="offer-card-desc">Run the process, share your findings. No cost.</div>
+            <form
+              name="atm-contribute"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              id="contributeForm"
+              class="contribute-form"
+            >
+              <input type="hidden" name="form-name" value="atm-contribute" />
+              <input type="hidden" name="gap-summary" id="hiddenSummary" />
+              <p style="display:none"><input name="bot-field" /></p>
+              <input type="text" name="name" placeholder="First name" class="contribute-input" autocomplete="given-name" required />
+              <input type="email" name="email" placeholder="Work email" class="contribute-input" required autocomplete="email" />
+              <button type="submit" class="contribute-submit">Get free access</button>
+            </form>
+            <div class="contribute-confirm" id="contributeConfirm" style="display:none;">
+              <div class="contribute-confirm-title">You are in.</div>
+              <div class="contribute-confirm-body">
+                <a href="/Address The Mess-6.pdf" class="download-link" download>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Download Address The Mess
+                </a>
+                <a href="/feedback" class="survey-link">Share your findings once you have run it</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="offer-card buy">
+            <div class="offer-card-label">Buy outright</div>
+            <div class="offer-card-title">Run it privately. No feedback required.</div>
+            <div class="offer-card-desc">Purchase Address The Mess and run it on your own timeline. Authority mapping worksheet, zombie asset checklist, and ROI calculator included.</div>
+            <a href="https://2279442040293.gumroad.com/l/sjmcby" class="btn-buy" target="_blank" rel="noopener noreferrer">Get Address The Mess — $47</a>
+            <div class="offer-note">One-time purchase. Yours to keep and reuse across systems.</div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
@@ -346,17 +421,6 @@ const description = "Find out if you have control or just visibility. Five check
     </a>
   </section>
 
-  <div class="section-divider"></div>
-
-  <section class="sprint-section">
-    <div class="sprint-card">
-      <div class="sprint-label">Paid · One System · 30 Days</div>
-      <div class="sprint-title">Found gaps the free checks could not close?</div>
-      <p class="sprint-desc">The One-System Authority Sprint turns your findings into a defensible plan. You produce a document that answers four questions about one real system: who is accountable, who has access, what depends on it, and what change would be risky.</p>
-      <a href="https://2279442040293.gumroad.com/l/sjmcby" class="btn-sprint" target="_blank" rel="noopener noreferrer">Get the Sprint - $47.00</a>
-    </div>
-  </section>
-
   <footer>
     <div>
       <div class="footer-id">Djerhy Jn Baptiste · CISSP</div>
@@ -374,21 +438,28 @@ const description = "Find out if you have control or just visibility. Five check
   (function () {
     var answers = {};
 
+    var checkLabels = {
+      1: 'Departed Access',
+      2: 'Retired Systems',
+      3: 'Ownership Test',
+      4: 'Test and Dev Cleanup',
+      5: 'Asset Drift'
+    };
+
     var resultMessages = {
-      gap: "Process failure - this is a real gap.",
-      unsure: "Visibility failure - you cannot confirm the state.",
-      clear: "Clear - no gap found."
+      gap: 'Process failure. This is a real gap.',
+      unsure: 'Visibility failure. You cannot confirm the state.',
+      clear: 'Clear. No gap found.'
     };
 
     function handleAnswer(btn) {
       var checkNum = btn.getAttribute('data-check');
       var type = btn.getAttribute('data-type');
-
       var card = document.getElementById('check-' + checkNum);
+
       card.querySelectorAll('.answer-btn').forEach(function (b) {
         b.classList.remove('selected-clear', 'selected-gap', 'selected-unsure');
       });
-
       btn.classList.add('selected-' + type);
 
       var status = document.getElementById('status-' + checkNum);
@@ -407,36 +478,47 @@ const description = "Find out if you have control or just visibility. Five check
       }
     }
 
+    function buildSummaryString(counts) {
+      var parts = [];
+      if (counts.gap > 0) parts.push(counts.gap + ' process failure' + (counts.gap > 1 ? 's' : ''));
+      if (counts.unsure > 0) parts.push(counts.unsure + ' visibility failure' + (counts.unsure > 1 ? 's' : ''));
+      if (counts.clear > 0) parts.push(counts.clear + ' clear');
+      var details = [];
+      for (var i = 1; i <= 5; i++) {
+        details.push(checkLabels[i] + ': ' + answers[i]);
+      }
+      return parts.join(', ') + ' | ' + details.join(' / ');
+    }
+
     function showResults() {
       var counts = { gap: 0, unsure: 0, clear: 0 };
       Object.values(answers).forEach(function (a) { counts[a]++; });
+      var totalGaps = counts.gap + counts.unsure;
 
-      var panel = document.getElementById('resultsPanel');
-      var title = document.getElementById('resultsTitle');
       var score = document.getElementById('resultsScore');
-      var summary = document.getElementById('resultsSummary');
-      var secondary = document.getElementById('resultsSecondary');
-
       score.innerHTML = '';
       if (counts.gap > 0) score.innerHTML += '<span class="score-pill gap">' + counts.gap + ' process failure' + (counts.gap > 1 ? 's' : '') + '</span>';
       if (counts.unsure > 0) score.innerHTML += '<span class="score-pill unsure">' + counts.unsure + ' visibility failure' + (counts.unsure > 1 ? 's' : '') + '</span>';
       if (counts.clear > 0) score.innerHTML += '<span class="score-pill clear">' + counts.clear + ' clear</span>';
 
-      var totalGaps = counts.gap + counts.unsure;
+      var title = document.getElementById('resultsTitle');
+      var summary = document.getElementById('resultsSummary');
 
       if (totalGaps === 0) {
-        title.textContent = "Strong baseline.";
-        summary.textContent = "You answered all five clearly. That is not common. The sprint is still worth running on your highest-risk system to formalize what you already know into something defensible.";
-        if (secondary) secondary.style.display = 'none';
+        title.textContent = 'Strong baseline.';
+        summary.textContent = 'You answered all five clearly. That is not common. Running Address The Mess on your highest-risk system will formalize what you already know into something you can hand to leadership or present to an auditor.';
       } else if (totalGaps <= 2) {
-        title.textContent = "You have " + totalGaps + " gap" + (totalGaps > 1 ? 's' : '') + " worth addressing.";
-        summary.textContent = "The free resources below will help you surface more detail. If you want to turn these findings into a structured plan you can hand to leadership, the sprint is the next step.";
+        title.textContent = 'You have ' + totalGaps + ' gap' + (totalGaps > 1 ? 's' : '') + ' worth addressing.';
+        summary.textContent = 'These are solvable. Address The Mess walks you through mapping one system completely so you can produce a defensible plan before the next audit or incident forces your hand.';
       } else {
-        title.textContent = "You have " + totalGaps + " gaps you could not answer.";
-        summary.textContent = "This is exactly the environment the sprint was built for. Start with one system, map the dependencies, and produce a plan that makes the next change safe.";
-        if (secondary) secondary.style.display = 'none';
+        title.textContent = 'You have ' + totalGaps + ' gaps you could not answer.';
+        summary.textContent = 'This is exactly the environment Address The Mess was built for. Start with one system. Map the dependencies. Produce a plan that makes the next change safe.';
       }
 
+      var hidden = document.getElementById('hiddenSummary');
+      if (hidden) hidden.value = buildSummaryString(counts);
+
+      var panel = document.getElementById('resultsPanel');
       panel.classList.add('show');
       setTimeout(function () {
         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -447,6 +529,25 @@ const description = "Find out if you have control or just visibility. Five check
       document.querySelectorAll('.answer-btn').forEach(function (btn) {
         btn.addEventListener('click', function () { handleAnswer(btn); });
       });
+
+      var form = document.getElementById('contributeForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var data = new FormData(form);
+          fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+          }).then(function () {
+            form.style.display = 'none';
+            document.getElementById('contributeConfirm').style.display = 'block';
+          }).catch(function () {
+            form.style.display = 'none';
+            document.getElementById('contributeConfirm').style.display = 'block';
+          });
+        });
+      }
     }
 
     if (document.readyState === 'loading') {

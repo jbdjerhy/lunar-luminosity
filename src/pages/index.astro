@@ -131,29 +131,10 @@ const description = "You can see your assets. You can't safely change them. Addr
       font-size: 15px;
       transition: background 0.15s, transform 0.08s;
       border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 12px;
     }
 
     .cta-primary:hover { background: var(--blue-hover); }
     .cta-primary:active { transform: translateY(1px); }
-
-    .cta-price {
-      font-size: 13px;
-      font-weight: 400;
-      opacity: 0.85;
-      margin-left: 4px;
-    }
-
-    .cta-secondary-link {
-      display: block;
-      font-size: 14px;
-      color: var(--muted2);
-      text-decoration: none;
-      margin-top: 4px;
-      transition: color 0.15s;
-    }
-
-    .cta-secondary-link:hover { color: var(--muted); }
 
     .hero-photo { width: 120px; flex-shrink: 0; }
 
@@ -194,11 +175,11 @@ const description = "You can see your assets. You can't safely change them. Addr
     .story-section { padding: 56px 0; }
 
     .section-label {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted2);
+      color: var(--muted);
       margin-bottom: 20px;
     }
 
@@ -313,100 +294,80 @@ const description = "You can see your assets. You can't safely change them. Addr
       opacity: 0.7;
     }
 
-    .sprint-section {
+    /* Method section */
+    .method-section {
       padding: 56px 0;
       border-top: 1px solid var(--border);
     }
 
-    .sprint-card {
-      background: var(--blue-dim);
-      border: 1px solid var(--blue-border);
-      border-radius: 14px;
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
     }
 
-    .sprint-card::after {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(47,129,247,0.08) 0%, transparent 70%);
-      pointer-events: none;
+    .method-card {
+      background: var(--panel);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 20px;
     }
 
-    .sprint-label {
+    .method-step {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #7fb0ff;
-      margin-bottom: 10px;
+      color: var(--blue);
+      margin-bottom: 8px;
     }
 
-    .sprint-title {
+    .method-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .method-desc {
+      font-size: 13px;
+      color: var(--muted2);
+      line-height: 1.6;
+    }
+
+    /* Close CTA */
+    .close-section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .close-heading {
       font-family: 'Fraunces', serif;
-      font-size: 26px;
+      font-size: clamp(22px, 3vw, 28px);
       font-weight: 700;
       line-height: 1.2;
       margin-bottom: 14px;
+      color: var(--text);
     }
 
-    .sprint-desc {
+    .close-sub {
       font-size: 15px;
+      color: var(--muted);
       line-height: 1.7;
-      color: var(--muted);
-      margin-bottom: 22px;
-      max-width: 500px;
+      max-width: 480px;
+      margin: 0 auto 28px;
     }
 
-    .sprint-outputs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 28px;
-    }
-
-    .sprint-output {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .check-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: rgba(47,129,247,0.2);
-      border: 1px solid rgba(47,129,247,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .check-icon svg { width: 8px; height: 8px; }
-
-    .sprint-cta-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .btn-sprint {
+    .cta-close {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: var(--blue);
       color: #fff;
-      padding: 15px 24px;
+      padding: 16px 28px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
@@ -415,68 +376,8 @@ const description = "You can see your assets. You can't safely change them. Addr
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .btn-sprint:hover { background: var(--blue-hover); }
-    .btn-sprint:active { transform: translateY(1px); }
-
-    .sprint-meta {
-      font-size: 13px;
-      color: var(--muted2);
-      line-height: 1.6;
-    }
-
-    .free-section {
-      padding: 48px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .free-note {
-      font-size: 14px;
-      color: var(--muted2);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .free-grid { display: grid; gap: 10px; }
-
-    .free-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      background: var(--panel);
-      border: 1px solid var(--border2);
-      border-radius: 10px;
-      padding: 16px 20px;
-      text-decoration: none;
-      transition: border-color 0.15s, background 0.15s;
-    }
-
-    .free-card:hover {
-      background: var(--panel2);
-      border-color: var(--border);
-    }
-
-    .free-card-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-
-    .free-card-desc { font-size: 13px; color: var(--muted2); }
-
-    .free-badge {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--muted2);
-      background: rgba(230,237,243,0.05);
-      border: 1px solid var(--border2);
-      padding: 4px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
+    .cta-close:hover { background: var(--blue-hover); }
+    .cta-close:active { transform: translateY(1px); }
 
     footer {
       border-top: 1px solid var(--border);
@@ -498,8 +399,11 @@ const description = "You can see your assets. You can't safely change them. Addr
       .hero { grid-template-columns: 1fr; padding: 48px 0 40px; }
       .hero-photo { order: -1; display: flex; gap: 16px; align-items: center; width: auto; }
       .headshot-ring { width: 72px; height: 72px; }
-      .recognition-grid, .sprint-outputs { grid-template-columns: 1fr; }
-      .story-card, .sprint-card { padding: 24px; }
+      .recognition-grid { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr; }
+      .story-card { padding: 24px; }
+      .close-section { text-align: left; }
+      .close-sub { margin-left: 0; margin-right: 0; }
       footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -522,12 +426,14 @@ const description = "You can see your assets. You can't safely change them. Addr
       <div class="hero-eyebrow">Asset Intelligence</div>
       <h1>You can see your assets.<br><em>You can't safely change them.</em></h1>
       <p class="hero-sub">
-        Address The Mess maps who owns what, what depends on what, and who can approve a change - so your next move isn't a guess.
+        Address The Mess maps who owns what, what depends on what, and who can approve a change so your next move is not a guess.
       </p>
-      <a href="https://2279442040293.gumroad.com/l/sjmcby" class="cta-primary" target="_blank" rel="noopener noreferrer">
-        Run the One-System Sprint <span class="cta-price">- $47.00</span>
+      <a href="/start-here" class="cta-primary">
+        Find out where your gaps are
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </a>
-      <a href="/start-here" class="cta-secondary-link">Not sure yet? Run the free checks first →</a>
     </div>
     <div class="hero-photo">
       <div>
@@ -550,7 +456,7 @@ const description = "You can see your assets. You can't safely change them. Addr
       <div class="story-collapsed" id="storyBody">
         <div class="story-body">
           <p>A community fairground asked for help upgrading their connectivity. The telecom rooms told the real story: equipment from different eras, different vendors, different purposes. Some devices were active. Some were merely powered. Some were tied to services no one could explain. No one could say what could be safely disconnected.</p>
-          <p>The facility was seasonal - critical infrastructure during events, quiet the rest of the year. Staff rotated, knowledge left with people, and changes accumulated while documentation did not. The real risk wasn't slow internet. It was disabling something the organization depended on without realizing it.</p>
+          <p>The facility was seasonal - critical infrastructure during events, quiet the rest of the year. Staff rotated, knowledge left with people, and changes accumulated while documentation did not. The real risk was not slow internet. It was disabling something the organization depended on without realizing it.</p>
           <p>Before discussing speeds or providers, we traced circuits building by building. We separated live services from powered residue, identified which lines were still under contract, and asked who actually had authority to remove them.</p>
         </div>
         <div class="story-outcome">
@@ -577,76 +483,44 @@ const description = "You can see your assets. You can't safely change them. Addr
       <div class="rec-item"><span class="rec-dot"></span><span>Systems work, but ownership is informal or undocumented.</span></div>
       <div class="rec-item"><span class="rec-dot"></span><span>An audit or renewal forces a last-minute scramble.</span></div>
       <div class="rec-item"><span class="rec-dot"></span><span>You inherited infrastructure and every change feels risky.</span></div>
-      <div class="rec-item"><span class="rec-dot"></span><span>Discovery tools give you a list - not an answer.</span></div>
+      <div class="rec-item"><span class="rec-dot"></span><span>Discovery tools give you a list, not an answer.</span></div>
     </div>
   </section>
 </div>
 
 <div class="container">
-  <section class="sprint-section">
-    <div class="sprint-card">
-      <div class="sprint-label">Paid · One System · 30 Days</div>
-      <div class="sprint-title">Run the One-System Authority Sprint</div>
-      <p class="sprint-desc">
-        A structured 30-day process to map ownership and safely change one real system. You produce a document you can hand to your manager - not a theory, a defensible plan.
-      </p>
-      <div class="sprint-outputs">
-        <div class="sprint-output">
-          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>Who is accountable for this system</span>
-        </div>
-        <div class="sprint-output">
-          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>Who has access and why</span>
-        </div>
-        <div class="sprint-output">
-          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>What depends on it</span>
-        </div>
-        <div class="sprint-output">
-          <span class="check-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M1 4l2 2 4-4" stroke="#7fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span>What change would be risky</span>
-        </div>
+  <section class="method-section">
+    <div class="section-label">How it works</div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-step">Step 01</div>
+        <div class="method-title">Run the checks</div>
+        <div class="method-desc">Five quick tests that reveal whether you have authority or just visibility. Takes under an hour.</div>
       </div>
-      <div class="sprint-cta-row">
-        <a href="https://2279442040293.gumroad.com/l/sjmcby" class="btn-sprint" target="_blank" rel="noopener noreferrer">
-          Get the Sprint - $47.00
-        </a>
-        <div class="sprint-meta">
-          Includes authority mapping worksheet,<br>zombie asset checklist &amp; ROI calculator.
-        </div>
+      <div class="method-card">
+        <div class="method-step">Step 02</div>
+        <div class="method-title">Map one system</div>
+        <div class="method-desc">Pick your highest-risk system. Map who owns it, who has access, what depends on it, and what change would be risky.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-step">Step 03</div>
+        <div class="method-title">Produce a defensible plan</div>
+        <div class="method-desc">Walk away with a document you can hand to your manager or present to an auditor with confidence.</div>
       </div>
     </div>
   </section>
 </div>
 
 <div class="container">
-  <section class="free-section">
-    <div class="section-label">Not ready yet? Start free.</div>
-    <p class="free-note">Run these privately before involving anyone else. Each one takes under an hour and shows you exactly where your gaps are.</p>
-    <div class="free-grid">
-      <a href="/ATM2.pdf" class="free-card">
-        <div>
-          <div class="free-card-title">Authority Checks</div>
-          <div class="free-card-desc">Five checks that reveal whether you have authority or just access. 10 min.</div>
-        </div>
-        <span class="free-badge">Free</span>
-      </a>
-      <a href="/AssetHunt Walkthrough.pdf" class="free-card">
-        <div>
-          <div class="free-card-title">AssetHunt Walkthrough</div>
-          <div class="free-card-desc">A 30-minute physical inventory pass. Walk your space, log what you find.</div>
-        </div>
-        <span class="free-badge">Free</span>
-      </a>
-      <a href="/Week One Security Assessment.pdf" class="free-card">
-        <div>
-          <div class="free-card-title">Week One Triage Walkthrough</div>
-          <div class="free-card-desc">Fictional FinTech scenario for GRC walkthroughs. Exposure, access gaps, vendor risk.</div>
-        </div>
-        <span class="free-badge">Free</span>
-      </a>
-    </div>
+  <section class="close-section">
+    <div class="close-heading">Find out where your environment stands.</div>
+    <p class="close-sub">Five checks. Under an hour. You will know exactly what gaps exist and what to do about them.</p>
+    <a href="/start-here" class="cta-close">
+      Start here
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
   </section>
 </div>
 
