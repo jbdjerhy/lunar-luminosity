@@ -136,6 +136,15 @@ const description = "You can see your assets. You can't safely change them. Addr
     .cta-primary:hover { background: var(--blue-hover); }
     .cta-primary:active { transform: translateY(1px); }
 
+    .cta-secondary {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .cta-secondary:hover { color: var(--text); }
+
     .hero-photo { width: 120px; flex-shrink: 0; }
 
     .headshot-ring {
@@ -428,12 +437,15 @@ const description = "You can see your assets. You can't safely change them. Addr
       <p class="hero-sub">
         Address The Mess maps who owns what, what depends on what, and who can approve a change so your next move is not a guess.
       </p>
-      <a href="/start-here" class="cta-primary">
-        Find out where your gaps are
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <a href="/start-here" class="cta-primary">
+          Run the checks
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="/start-here#offer" class="cta-secondary">Get the sprint</a>
+      </div>
     </div>
     <div class="hero-photo">
       <div>
@@ -515,12 +527,15 @@ const description = "You can see your assets. You can't safely change them. Addr
   <section class="close-section">
     <div class="close-heading">Find out where your environment stands.</div>
     <p class="close-sub">Five checks. Under an hour. You will know exactly what gaps exist and what to do about them.</p>
-    <a href="/start-here" class="cta-close">
-      Start here
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:center;">
+      <a href="/start-here" class="cta-close">
+        Run the checks
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="/start-here#offer" class="cta-secondary">Get the sprint</a>
+    </div>
   </section>
 </div>
 

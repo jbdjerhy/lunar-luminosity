@@ -340,6 +340,7 @@ const description = "Five checks that tell you whether your organization has con
       <div class="check-result" id="result-5"></div>
     </div>
 
+    <div id="offer"></div>
     <div class="results-panel" id="resultsPanel">
       <div class="results-title" id="resultsTitle"></div>
       <div class="results-score" id="resultsScore"></div>
@@ -554,6 +555,17 @@ const description = "Five checks that tell you whether your organization has con
       document.addEventListener('DOMContentLoaded', init);
     } else {
       init();
+    }
+
+    // Show offer panel directly if linked to via #offer
+    if (window.location.hash === '#offer') {
+      var panel = document.getElementById('resultsPanel');
+      if (panel) {
+        panel.classList.add('show');
+        setTimeout(function () {
+          document.getElementById('offer').scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
     }
   })();
 </script>
